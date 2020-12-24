@@ -23,8 +23,8 @@ public class Message implements Serializable {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "from", referencedColumnName = "id")
-    private User from;
+    @JoinColumn(name = "from_user", referencedColumnName = "id")
+    private User fromUser;
 
     @Column
     private String message;
@@ -49,11 +49,11 @@ public class Message implements Serializable {
         this.userDestination = userDestination;
     }
 
-    public User getFrom() {
-        return from;
+    public User getFromUser() {
+        return fromUser;
     }
 
-    public void setFrom(User from) {
-        this.from = from;
+    public void setFromUser(User fromUser) {
+        this.fromUser = fromUser;
     }
 }

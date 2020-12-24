@@ -27,7 +27,7 @@ public class User implements Serializable {
     @Column
     private String password;
 
-    @OneToMany(mappedBy = "from", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "fromUser", fetch = FetchType.LAZY)
     private Set<Message> messages;
 
     @OneToOne(mappedBy = "userDestination", fetch = FetchType.LAZY)
