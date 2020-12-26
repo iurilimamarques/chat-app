@@ -3,7 +3,7 @@ require('../node_modules/bootstrap/dist/css/bootstrap.css');
 
 module.exports = angular
   .module('chatApp', [
-    require('angular-ui-router')
+    require('angular-ui-router'),
+    require('./face-page')
   ])
-  .config(require('./index.states'))
-  .directive('facePage', require('./face-page/face-page.directive')).name;
+  .config(require('./index.states')).name;
