@@ -1,5 +1,6 @@
 package com.iurimarques.apichatproject.controller;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 import com.iurimarques.apichatproject.model.User;
@@ -25,7 +26,11 @@ public class AuthenticationController {
     public ResponseEntity loginUser(@RequestBody User user) {
         User checkUserExistence = userRepository.findByEmail(user.getEmail());
         if(!Objects.nonNull(checkUserExistence)) {
-            return new ResponseEntity<>("Conta inexistente!", HttpStatus.BAD_REQUEST);
+            HashMap<String, String> response = new HashMap<>();
+            response.put("response", "Conta inexistente!");
+            return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(response);
         }
 
         User userLogged = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
@@ -37,7 +42,11 @@ public class AuthenticationController {
                 .body(userReturn);
         }
 
-        return new ResponseEntity<>("Senha incorreta!", HttpStatus.BAD_REQUEST);
+        HashMap<String, String> response = new HashMap<>();
+        response.put("response", "Senha incorreta!");
+        return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(response);
     }
     
 

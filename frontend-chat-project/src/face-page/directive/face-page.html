@@ -10,18 +10,21 @@
                 </div>
                 <div class="col-md-7 py-5 px-5">
                     <h3>Login Chat</h3>
-                    <form ng-submit="vm.userLogin()">
+                    <form ng-submit="vm.userLogin()" name="formLogin">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" ng-model="vm.userCredentials.email">
+                            <input type="email" class="form-control" id="email" ng-model="vm.userCredentials.email" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" ng-model="vm.userCredentials.password">
+                            <input type="password" class="form-control" id="password" ng-model="vm.userCredentials.password" required>
+                        </div>
+                        <div class="row mb-3" ng-if="vm.messageError">
+                            <span class="text-danger">{{vm.messageError}}</span>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary form-control">Login</button>
+                                <button type="submit" class="btn btn-primary form-control" ng-disabled="formLogin.$pristine || formLogin.$invalid">Login</button>
                             </div>
                             <div class="col-md-3">
                                 <button type="button" class="btn btn-secondary">Sign up</button>
