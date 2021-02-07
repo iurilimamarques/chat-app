@@ -72,6 +72,7 @@ function Controller(SockJS, Stomp, MessageService, UserFactory, $rootScope, $sco
 
   function _verifyActiveChats(fromUserId) {
     let knownUser = vm.activeChats.find(a => _isknownUser(a, fromUserId));
+    console.log();
     if(!knownUser) _getActiveChats();
   }
 

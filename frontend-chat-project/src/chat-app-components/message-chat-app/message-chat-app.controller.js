@@ -32,7 +32,7 @@ function Controller(UserFactory, MessageChatAppService, $scope) {
   }
 
   function _onNewMessage(event, data) {
-    if(data.userDestination.id == vm.recipient.id) _pushNewMessage(data);
+    if(data.fromUser.id == vm.recipient.id) _pushNewMessage(data);
   }
 
   function _sendMessage() {
