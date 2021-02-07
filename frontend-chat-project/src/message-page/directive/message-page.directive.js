@@ -6,9 +6,9 @@ module.exports = directive;
 directive.$inject = [];
 
 function directive() {
-    return {
-        template: template,
-        controller: controller,
-        controllerAs: 'vm'
-    }
+  return {
+    template: template,
+    controller: controller,
+    controllerAs: 'vm'
+  }
 }

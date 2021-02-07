@@ -1,4 +1,6 @@
 let template = require('./select2-chat-app.html');
+let angular = require('angular');
+
 module.exports = directive;
 
 directive.$inject = [];
@@ -9,28 +11,33 @@ function directive() {
     template: template,
     controller: Controller,
     controllerAs: 'vm',
-    scope: {
-      declarado: '=?',
-      apurado: '=?',
-      usuarioAlteracao: '=?'
+    scope: {},
+    bindToController: {
+      ngModel: '='
     }
   }
 }
 
-Controller.$inject = [];
+Controller.$inject = ['$rootScope', 'SelectService', 'UserFactory'];
 
-function Controller() {
-  let vm = this;
+function Controller($rootScope, SelectService, UserFactory) {
+  let vm = null;
+  this.$onInit = function() {
+    vm = this;
+    vm.searchUser = _searchUser;
+    vm.onSelectUser = _onSelectUser;
+  }
 
-  vm.person = {};
-  vm.people = [
-    { name: 'Adam',      email: 'adam@email.com',      age: 10 },
-    { name: 'Amalie',    email: 'amalie@email.com',    age: 12 },
-    { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30 },
-    { name: 'Samantha',  email: 'samantha@email.com',  age: 31 },
-    { name: 'Estefanía', email: 'estefanía@email.com', age: 16 },
-    { name: 'Natasha',   email: 'natasha@email.com',   age: 54 },
-    { name: 'Nicole',    email: 'nicole@email.com',    age: 43 },
-    { name: 'Adrian',    email: 'adrian@email.com',    age: 21 }
-  ];
+  function _onSelectUser($select) {
+    let userSelected = angular.copy(vm.ngModel.selected);
+    delete $select.selected;
+    $rootScope.$emit('onSelectUser', userSelected);
+  }
+
+  function _searchUser($select) {
+    let loggedUser = UserFactory.model.id;
+    SelectService.searchUser($select.search, loggedUser).then(response => {
+      vm.people = response.data;
+    });
+  }
 }
