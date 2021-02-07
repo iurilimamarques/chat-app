@@ -1,7 +1,6 @@
 package com.iurimarques.apichatproject.utils;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Map;
 
 import com.iurimarques.apichatproject.model.User;

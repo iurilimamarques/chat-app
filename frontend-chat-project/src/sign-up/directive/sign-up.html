@@ -1,4 +1,4 @@
-<title>Login</title>
+<title>Sign Up</title>
 <div class="row d-flex justify-content-center py-5">
     <div class="col-md-8">
         <div class="card" style="background-color: #efefef;">
@@ -9,11 +9,15 @@
                     </div>
                 </div>
                 <div class="col-md-7 py-5 px-5">
-                    <h3>Login Chat</h3>
-                    <form ng-submit="vm.userLogin()" name="formLogin">
+                    <h3>Sign Up to Chat App</h3>
+                    <form ng-submit="vm.saveUser()" name="formSignUp">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" ng-model="vm.userCredentials.email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="name" class="form-control" id="name" ng-model="vm.userCredentials.name" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
@@ -24,10 +28,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary form-control" ng-disabled="formLogin.$pristine || formLogin.$invalid">Login</button>
+                                <button type="submit" class="btn btn-primary form-control" ng-disabled="formSignUp.$pristine || formSignUp.$invalid">Create</button>
                             </div>
                             <div class="col-md-3">
-                                <button type="button" class="btn btn-secondary" data-ui-sref="sign-up" data-ui-sref-active="active">Sign up</button>
+                                <button type="button" class="btn btn-secondary" data-ui-sref="face-page">Sign in</button>
                             </div>
                         </div>
                     </form>
@@ -36,3 +40,4 @@
         </div>
     </div>
 </div>
+

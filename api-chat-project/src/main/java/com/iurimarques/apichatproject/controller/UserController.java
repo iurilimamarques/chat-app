@@ -2,9 +2,6 @@ package com.iurimarques.apichatproject.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
-import com.fasterxml.jackson.core.sym.Name;
 import com.iurimarques.apichatproject.data.vo.DestinationUserVO;
 import com.iurimarques.apichatproject.data.vo.UserVO;
 import com.iurimarques.apichatproject.services.UserService;

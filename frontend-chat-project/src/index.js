@@ -6,6 +6,7 @@ module.exports = angular
   .module('chatApp', [
     require('angular-ui-router'),
     require('./face-page'),
+    require('./sign-up'),
     require('./message-page')
   ])
   .config(require('./index.states')).name;

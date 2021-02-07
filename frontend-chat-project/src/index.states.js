@@ -13,5 +13,13 @@ function states($stateProvider, $urlRouterProvider) {
           template: '<face-page/>'
         }
       }
+    })
+    .state('sign-up', {
+      url: '/sign-up',
+      views: {
+        content: {
+          template: '<sign-up/>'
+        }
+      }
     });
 }

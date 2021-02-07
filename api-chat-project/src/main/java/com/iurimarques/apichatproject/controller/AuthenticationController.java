@@ -62,12 +62,23 @@ public class AuthenticationController {
 
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createUser(@RequestBody User user) {
+        if(Objects.nonNull(userRepository.findByEmail(user.getEmail()))) {
+            HashMap<String, String> response = new HashMap<>();
+            response.put("response", "Uma conta com este e-mail já existe!");
+            return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(response);
+        }
         User userCreated = userRepository.save(user);
         if(!Objects.nonNull(userCreated)) {
-            return new ResponseEntity<>("Não foi possível salvar!", HttpStatus.BAD_REQUEST);
+            HashMap<String, String> response = new HashMap<>();
+            response.put("response", "Não foi possível salvar!");
+            return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(response);
         }
         return ResponseEntity
-            .status(HttpStatus.OK)
+            .ok()
             .body(userCreated);
     }
 }
