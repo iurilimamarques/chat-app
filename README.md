@@ -30,6 +30,9 @@ $ npm run dev
 ```
 ## Backend
 It's important to notice that the frontend rely on the backend running to work properly, follow the instructions to get the backend running.
+<br>
+It's also important to create a database named **chat_database** and the database's credential should match the defined in **application.properties** in the backend file.
+
 #### Entering the project directory
 ```
 $ cd chat-app/api-chat-project
