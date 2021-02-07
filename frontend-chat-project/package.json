@@ -5,7 +5,7 @@
   "module": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "webpack-dev-server --inline --hot --content-base ./src",
+    "server": "webpack-dev-server --inline --hot --content-base --port 8081 ./src",
     "dev": "npm run server",
     "build": "webpack"
   },
