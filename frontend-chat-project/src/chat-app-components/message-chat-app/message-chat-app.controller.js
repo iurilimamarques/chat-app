@@ -45,7 +45,10 @@ function Controller(UserFactory, MessageChatAppService, $scope) {
       createdAt: moment().format('YYYY-MM-DD HH:mm:ss')
     };
     vm.sendMessage(payload);
-    _pushNewMessage(payload, true);
+
+    let payloadToBePushed = angular.copy(payload);
+    payloadToBePushed.createdAt = moment(payload.createdAt).format('HH:mm DD/MM/YYYY');
+    _pushNewMessage(payloadToBePushed, true);
   }
 
   function _pushNewMessage(data, onSend = false) {
